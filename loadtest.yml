@@ -3,21 +3,24 @@ name: K6 Load Test
 on:
   push:
     branches:
-      - main
+      - main  # يتم تشغيل هذا الإجراء عند الدفع إلى الفرع الرئيسي
   pull_request:
     branches:
-      - main
+      - main  # يتم تشغيل هذا الإجراء عند فتح طلب سحب (PR) إلى الفرع الرئيسي
 
 jobs:
   k6:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # سيعمل الإجراء على نظام تشغيل Ubuntu
+
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # تحميل الكود من مستودع GitHub
+
       - name: Set up K6
         run: |
           curl -s https://dl.k6.io/key.gpg | sudo tee /etc/apt/trusted.gpg.d/k6.asc
           sudo apt update
-          sudo apt install k6
-      - name: Run Load Test
-        run: k6 run loadtest_form.js
+          sudo apt install k6  # تثبيت k6 في بيئة GitHub Actions
+
+      - name: Run K6 Load Test
+        run: k6 run loadtest_form.js  # تشغيل اختبار k6 باستخدام السكربت الخاص بك
