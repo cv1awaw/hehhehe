@@ -1,14 +1,10 @@
 {
-  "name": "my-k6-dashboard",
+  "name": "load-test-project",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "test": "k6 run loadtest.js"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "k6": "^0.35.0"
   }
 }
