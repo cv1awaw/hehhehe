@@ -3,17 +3,17 @@ import { check, sleep } from 'k6';
 import { Trend } from 'k6/metrics';
 
 // غيّر الرابط هنا إلى رابط الـ API أو صفحة التسجيل الخاصة بك (لكن فقط لو عندك صلاحية)
-const TARGET = 'https://www.viatosis.ar.nf/sign-up/';
+const TARGET = __ENV.TARGET_URL || 'https://www.example.com/sign-up/';
 
 export let options = {
   scenarios: {
     constant_rps: {
       executor: 'constant-arrival-rate',
-      rate: 1000000,          // عدد الطلبات في الثانية (100 RPS)
+      rate: 1000,          // عدد الطلبات في الثانية (1000 RPS)
       timeUnit: '1s',     // المعدّل محسوب لكل ثانية
-      duration: '60m',     // مدة الاختبار (مثلاً دقيقتين)
+      duration: '60m',     // مدة الاختبار (60 دقيقة)
       preAllocatedVUs: 400, // عدد المستخدمين الافتراضيين المبدئيين
-      maxVUs: 10000000,        // أقصى عدد VUs ممكن يولّدها k6 للحفاظ على المعدّل
+      maxVUs: 1000000,        // أقصى عدد VUs ممكن يولّدها k6 للحفاظ على المعدّل
     },
   },
   thresholds: {
