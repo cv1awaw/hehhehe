@@ -10,10 +10,10 @@ export let options = {
     constant_rps: {
       executor: 'constant-arrival-rate',
       rate: 1000,          // عدد الطلبات في الثانية (1000 RPS)
-      timeUnit: '1s',     // المعدّل محسوب لكل ثانية
-      duration: '60m',     // مدة الاختبار (60 دقيقة)
+      timeUnit: '1s',       // المعدّل محسوب لكل ثانية
+      duration: '60m',      // مدة الاختبار (60 دقيقة)
       preAllocatedVUs: 400, // عدد المستخدمين الافتراضيين المبدئيين
-      maxVUs: 1000000,        // أقصى عدد VUs ممكن يولّدها k6 للحفاظ على المعدّل
+      maxVUs: 1000000,      // أقصى عدد VUs ممكن يولّدها k6 للحفاظ على المعدّل
     },
   },
   thresholds: {
@@ -48,6 +48,9 @@ export default function () {
     'no server error (>=500)': (r) => r.status < 500,
   });
 
+  // إضافة الوقت المستغرق لإتمام الطلب إلى المؤشر
   reqTrend.add(res.timings.duration);
-  sleep(Math.random() * 1.5 + 0.5); // تأخير بسيط لمحاكاة مستخدم حقيقي
+
+  // تأخير عشوائي لمحاكاة تفاعل المستخدم الحقيقي
+  sleep(Math.random() * 1.5 + 0.5); // تأخير بين 0.5 و 2 ثانية
 }
