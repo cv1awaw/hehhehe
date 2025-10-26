@@ -1,0 +1,14 @@
+{
+  "name": "k6-load-test",
+  "version": "1.0.0",
+  "main": "loadtest_form.js",
+  "scripts": {
+    "start": "react-scripts start", // في حال كان لديك تطبيق React وتحتاج إلى تشغيله
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "react-scripts": "^4.0.0",
+    "k6": "^0.35.0" // إضافة k6 كـ dependency إذا أردت استخدامه مع React
+  },
+  "devDependencies": {}
+}
