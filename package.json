@@ -1,10 +1,1 @@
-{
-  "name": "load-test-project",
-  "version": "1.0.0",
-  "scripts": {
-    "test": "k6 run loadtest.js"
-  },
-  "dependencies": {
-    "k6": "^0.35.0"
-  }
-}
+
