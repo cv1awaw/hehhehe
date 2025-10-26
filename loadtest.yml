@@ -1,0 +1,23 @@
+name: K6 Load Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  k6:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Set up K6
+        run: |
+          curl -s https://dl.k6.io/key.gpg | sudo tee /etc/apt/trusted.gpg.d/k6.asc
+          sudo apt update
+          sudo apt install k6
+      - name: Run Load Test
+        run: k6 run loadtest_form.js
