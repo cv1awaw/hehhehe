@@ -6,10 +6,10 @@
     "build": "react-scripts build"
   },
   "dependencies": {
-    "k6": "^0.42.0",
-    "react-scripts": "^4.0.0"
+    "react-scripts": "^4.0.0",
+    "k6": "^0.42.0"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   }
 }
